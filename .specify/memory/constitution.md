@@ -1,55 +1,55 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+<!--
+SYNC IMPACT REPORT:
+Version change: N/A → 1.0.0
+Modified principles: N/A (new constitution created)
+Added sections: All sections (new constitution)
+Removed sections: N/A
+Templates requiring updates:
+  - .specify/templates/plan-template.md: ✅ Constitution Check section aligns with new principles
+  - .specify/templates/spec-template.md: ✅ No direct constitution references to update
+  - .specify/templates/tasks-template.md: ✅ No direct constitution references to update
+Follow-up TODOs: None
+-->
+
+# AI-Native Todo Ecosystem Constitution
 
 ## Core Principles
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+### Modularity (NON-NEGOTIABLE)
+Code must be decoupled. Business logic must be separate from Interface (CLI/API) and Storage (Memory/DB). This ensures clean architecture and enables seamless transitions between different interface and storage implementations.
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+### Scalability
+Architecture must support migration from local in-memory to distributed cloud clusters. All components must be designed with horizontal scaling in mind from the initial implementation.
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+### Reliability (NON-NEGOTIABLE)
+Test-Driven Development (TDD) is mandatory for all core logic. Tests must be written before implementation, and no code may be committed without passing tests. This ensures 100% test coverage for business logic.
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+### Documentation
+Spec-Kit Plus standards apply to all phases. All code must include comprehensive documentation, including docstrings for all public modules, classes, and methods, following the specified standards.
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+### Architecture & Design Patterns
+Repository Pattern: Use abstract base classes for data access to enable swapping In-Memory (Phase I) with SQLModel/Neon (Phase II) seamlessly. Dependency Injection: Never hardcode dependencies; inject them to facilitate testing and scaling. Interface Segregation: Keep CLI, API, and Worker interfaces distinct.
 
-### [PRINCIPLE_6_NAME]
+### Coding Standards
+Python (Backend): PEP 8 compliant, strict type hinting (`typing` module), Python 3.10+. JavaScript/TS (Frontend): ESLint + Prettier, Functional components (React/Next.js). Error Handling: No silent failures. Use custom exception classes and structured logging. Comments: Docstrings required for all public modules, classes, and methods.
 
+## Directory Structure Guidelines
+- /src/core: Pure business logic (Entities, Use Cases).
+- /src/adapters: Infrastructure code (Repositories, Database connections, 3rd party APIs).
+- /src/interfaces: Entry points (CLI main.py, FastAPI routes).
+- /tests: Mirror the src structure.
 
-[PRINCIPLE__DESCRIPTION]
-
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
-
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
-
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
-
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+## Development Workflow & Constraints
+- Methodology: TDD (Write tests -> Write implementation -> Refactor).
+- Commit Policy: No commits without passing tests.
+- Scope Control: Strictly adhere to the current active Phase requirements. Do not over-engineer features for future phases prematurely.
+- Tech Stack Evolution:
+  - Phase I: Python, In-Memory Dicts/Lists, CLI.
+  - Phase II: Add FastAPI, SQLModel, Next.js.
+  - Phase III: Add OpenAI SDK, Agents.
+  - Phase IV-V: Docker, K8s, Cloud Events (Kafka).
 
 ## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
+All development must strictly follow the defined architecture patterns and coding standards. The Repository Pattern with abstract base classes ensures seamless transitions between phases. Dependency Injection must be used to maintain testability and scalability. Code reviews must verify compliance with all constitution principles. Breaking changes require explicit approval and migration planning.
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
-
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+**Version**: 1.0.0 | **Ratified**: 2026-01-01 | **Last Amended**: 2026-01-01

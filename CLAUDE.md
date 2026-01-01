@@ -208,3 +208,10 @@ Wait for consent; never auto-create ADRs. Group related decisions (stacks, authe
 
 ## Code Standards
 See `.specify/memory/constitution.md` for code quality, testing, performance, security, and architecture principles.
+
+## Active Technologies
+- Python 3.13+ + UV package manager, standard library only (no external dependencies) (001-todo-cli-app)
+- In-Memory List/Dictionary (non-persistent, data lost on app close) (001-todo-cli-app)
+
+## Recent Changes
+- 001-todo-cli-app: Added Python 3.13+ + UV package manager, standard library only (no external dependencies)
