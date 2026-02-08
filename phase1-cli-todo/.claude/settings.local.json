@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git fetch --all --prune)",
+      "Bash(.specify/scripts/bash/setup-plan.sh --json)",
+      "Bash(.specify/scripts/bash/check-prerequisites.sh --json --require-tasks --include-tasks)",
+      "Bash(python -c \"from src.interfaces.cli.main import main; print(''Import successful'')\")",
+      "Bash(python3 -m pytest tests/unit/core/test_todo_service.py -v)",
+      "Bash(git init)"
+    ]
+  },
+  "enabledMcpjsonServers": [
+    "github",
+    "context7"
+  ],
+  "enableAllProjectMcpServers": true
+}
